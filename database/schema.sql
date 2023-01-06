@@ -4,8 +4,12 @@ create database eshop;
 
 use eshop;
 
+GRANT ALL PRIVILEGES ON *.* TO 'adil'@'localhost' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+
 CREATE TABLE customers (
-    name varchar(32) not null,
+    name varchar(32) not null unique,
     address varchar(128) not null,
     email varchar(128) not null,
     primary key(name)
@@ -18,3 +22,22 @@ VALUES
     ("spongebob", "124 Conch Street, Bikini Bottom", "spongebob@yahoo.com"),
     ("jessica", "698 Candlewood Land, Cabot Cove", "fletcher@gmail.com"),
     ("dursley", "4 Privet Drive, Little Whinging, Surrey", "dursley@gmail.com");
+
+CREATE TABLE orders (
+    order_id varchar(8) not null, 
+    name varchar(32) not null unique,
+    order_date date not null,
+    primary key(order_id),
+    constraint fk_order_id
+        foreign key(name) references customers(name)
+);
+
+create table line_item (
+    item_id int auto_increment not null,
+    description text not null,
+    quantity int default '1',
+    order_id char(8) not null,
+    primary key(item_id),
+    constraint fk_order_id
+        foreign key(order_id) references orders(order_id)
+);
