@@ -39,11 +39,7 @@ public class CustomerRepository {
     }
 
     public List<Order> getCustomersOrder(Integer id) {
-        // prevent inheritance
         final List<Order> orders = new LinkedList<>();
-
-        // perform the query
-
         final SqlRowSet rs = jdbcTemplate.queryForRowSet(SQL_SELECT_ALL_CUSTOMERS_ORDER, id);
 
         while (rs.next()) {

@@ -31,8 +31,15 @@ public class OrderService {
         System.out.printf(">>>> order quantity: %s\n", po.getCustomer().toString());
         if (po.getLineItems().size() > 5)
             throw new OrderException("Cannot order more than 5 items");
-        // Create the associated line items
         custRepo.addLineItems(po.getLineItems(), orderId);
 
+    }
+
+    public Order getOrderId(Integer orderId) {
+        return null;
+    }
+
+    public Object updateOrder(Order order) {
+        return null;
     }
 }

@@ -53,5 +53,8 @@ public class Order {
 	public List<LineItem> getLineItems() { return this.lineItems; }
 	public void setLineItems(List<LineItem> lineItems) { this.lineItems = lineItems; }
 	public void addLineItem(LineItem lineItem) { this.lineItems.add(lineItem); }
+	public Object toJSON() {
+		return null;
+	}
 }
 
