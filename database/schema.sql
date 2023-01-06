@@ -32,12 +32,22 @@ CREATE TABLE orders (
         foreign key(name) references customers(name)
 );
 
-create table line_item (
+CREATE TABLE line_items (
     item_id int auto_increment not null,
     description text not null,
     quantity int default '1',
-    order_id char(8) not null,
+    order_id varchar(8) not null,
     primary key(item_id),
+    constraint fk_order_id
+        foreign key(order_id) references orders(order_id)
+);
+
+CREATE TABLE order_status (
+    order_id varchar (8) not null unique,
+    delivery_id varchar (128) not null,
+    status BINARY ("pending" or "dispatched"),
+    status_update int (CURRENT_TIMESTAMP()),
+    primary key(order_id),
     constraint fk_order_id
         foreign key(order_id) references orders(order_id)
 );
