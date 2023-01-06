@@ -8,6 +8,7 @@ public class CustomerRepository {
 
 	// You cannot change the method's signature
 	public Optional<Customer> findCustomerByName(String name) {
+		return null;
 		// TODO: Task 3 
 
 	}
